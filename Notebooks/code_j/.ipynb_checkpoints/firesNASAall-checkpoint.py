@@ -21,7 +21,6 @@ import pickle
 from pandas import Timestamp
 import csv
 from helferlein_thomas import files
-#from firesfromSpace import date_seperating 
 from scipy.stats import poisson
 from scipy.stats import expon
 import folium
