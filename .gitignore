@@ -1,0 +1,16 @@
+
+Data/Clean/carchive_M6.csv
+Data/Clean/carchive_V1.csv
+Data/Clean/cnrt_M6.csv
+Data/Clean/cnrt_V1.csv
+Data/Raw/archive_M6.csv
+Data/Raw/archive_V1.csv
+Data/Raw/hail.csv
+Data/Raw/lightning.csv
+Data/Raw/nrt_M6.csv
+Data/Raw/nrt_V1.csv
+Data/Raw/rain.csv
+Data/Raw/wind.csv
+debug.log
+.vscode/launch.json
+.vscode/settings.json
