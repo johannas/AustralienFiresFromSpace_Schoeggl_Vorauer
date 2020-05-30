@@ -31,7 +31,7 @@ def date_separating(df, sel):
         out.append([g.reset_index() for n, g in df.set_index('acq_date').groupby(pd.Grouper(freq = 'M'))])
     if 'Y' in sel:
         out.append([g.reset_index() for n, g in df.set_index('acq_date').groupby(pd.Grouper(freq = 'Y'))])
-    return out[0]
+    return out
 
 def get_state(df):
     def conds(row):
