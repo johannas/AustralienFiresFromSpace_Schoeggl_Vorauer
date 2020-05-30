@@ -8,10 +8,15 @@ from geopy.extra.rate_limiter import RateLimiter
 from geopy.geocoders import Nominatim
 import swifter # swifter is for multiprocessing pandas apply functions
 
+### DATETIME FUNCTION ###
+
 def datetime(df):
     '''spalte acq_date als Datetime auszeichnen'''
     df['acq_date'] = pd.to_datetime(df['acq_date'])
     return df 
+
+
+### TIMESELECTION ###
 
 def timeselect(df, freq = 'D', fct = 'mean', columns = ['frp','brightness', 'bright_t31']):
     df['acq_date'] = pd.to_datetime(df['acq_date'])-pd.to_timedelta(7, unit='d')
@@ -19,6 +24,9 @@ def timeselect(df, freq = 'D', fct = 'mean', columns = ['frp','brightness', 'bri
     if fct == 'max':  out = df.groupby([pd.Grouper(key='acq_date', freq=freq)])[columns].max().reset_index().sort_values('acq_date')
     if fct == 'min':  out = df.groupby([pd.Grouper(key='acq_date', freq=freq)])[columns].min().reset_index().sort_values('acq_date')
     return out
+
+
+### DATESEPARATING ###
 
 def date_separating(df, sel): 
     '''splits dataframes into weeks, months, years'''
@@ -31,7 +39,10 @@ def date_separating(df, sel):
         out.append([g.reset_index() for n, g in df.set_index('acq_date').groupby(pd.Grouper(freq = 'M'))])
     if 'Y' in sel:
         out.append([g.reset_index() for n, g in df.set_index('acq_date').groupby(pd.Grouper(freq = 'Y'))])
-    return out[0]
+    return out
+
+
+### GET_STATE FUNCTION ###
 
 def get_state(df):
     def conds(row):
@@ -62,6 +73,9 @@ def get_state(df):
     df['State'] = df.swifter.apply(conds, axis=1)
     return df
 
+
+### STRING-CHANGE ###
+
 def stringchange(df, column = 'Location'):
     
     result = []
@@ -70,6 +84,9 @@ def stringchange(df, column = 'Location'):
         result.append(sep.join(re.findall('[A-Z][^A-Z]*', i )))
     df[column] = result
     return df
+
+
+### GEOREFERENCING_STUFF ###
 
 def geolookup(row):
     gc = Nominatim(user_agent="fintu-blog-geocoding-python")
@@ -95,6 +112,9 @@ def reverse_filling(df1, df2):
     df1['latitude'] = templatitude
     df1['longitude'] = templongitude
     return df1
+
+
+### YEAR_MONTH FUNKCTION ###
 
 def year_month(df):
     year = np.array([(d.year, d.month) for d in df['acq_date']])
