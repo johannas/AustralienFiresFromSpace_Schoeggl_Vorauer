@@ -14,3 +14,9 @@ Data/Raw/wind.csv
 debug.log
 .vscode/launch.json
 .vscode/settings.json
+Notebooks/.ipynb_checkpoints/data_cleaning-Copy2-checkpoint.ipynb
+Notebooks/.ipynb_checkpoints/Function_Definitions-checkpoint.ipynb
+Notebooks/.ipynb_checkpoints/Function_Definitions-checkpoint.py
+Notebooks/.ipynb_checkpoints/rain_wind_lightning_cleaning-checkpoint.ipynb
+Notebooks/__pycache__/Function_Definitions.cpython-36.pyc
+Notebooks/__pycache__/helferlein.cpython-36.pyc
