@@ -1,3 +1,6 @@
+### Function Definitions//All Functions and Librarys Used For Project ###
+## Schoeggl_Vorauer 2020 ##
+
 import pandas as pd
 import numpy as np
 import re
