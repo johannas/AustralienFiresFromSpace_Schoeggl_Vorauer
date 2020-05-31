@@ -1,6 +1,7 @@
 ### Function Definitions//All Functions and Librarys Used For Project ###
 ## Schoeggl_Vorauer 2020 ##
 
+import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import re
@@ -120,3 +121,14 @@ def year_month(df):
     year = np.array([(d.year, d.month) for d in df['acq_date']])
     df['Year'],df['Month'] = year.T 
     return df
+
+
+### PEARSON CORRELATION MATRIX ###
+
+
+def pearsoncor(df, name = 'pearson correlation', cmap = plt.cm.Reds, **kwargs):
+    import seaborn as sns
+    #Using Pearson Correlation
+    plt.figure(name, figsize=(22,12))
+    cor = df.corr()
+    sns.heatmap(cor, annot=True, cmap=cmap, **kwargs)
